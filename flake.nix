@@ -21,7 +21,7 @@
       defaultPackage.${arch} =
         home-manager.defaultPackage.${arch};
 
-      homeConfigurations."ainharan@Ainharans-MBP" = 
+      homeConfigurations.ainharan = 
         home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.${arch};
           modules = [ ./home.nix ];
@@ -29,14 +29,6 @@
             pkgs-unstable = nixpkgs-unstable.legacyPackages.${arch};
           };
         };
-
-      # set up for oracle machine
-      homeConfigurations."ainharan@ainharan-mac" = 
-        home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.${arch};
-          modules = [ ./home.nix ];
-        };
-
     };
 
 }
