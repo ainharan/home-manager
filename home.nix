@@ -1,11 +1,12 @@
-{ pkgs, ... }: {
+{ pkgs, pkgs-unstable, ... }: {
   home.username = "ainharan";
   home.homeDirectory = "/Users/ainharan";
-  home.stateVersion = "23.11";
+  home.stateVersion = "23.05";
   programs.home-manager.enable = true;
 
   home.packages = [
     pkgs.sl # for testing purposes
+    pkgs-unstable.cowsay # test unstable specified pkg
   ];
 
   programs.git = {
