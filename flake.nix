@@ -14,28 +14,28 @@
     };
   };
 
-  outputs = { nixpkgs, nixpkgs-unstable, home-manager, ... }:
-  let
-    arch = "aarch64-darwin";
-  in {
-    defaultPackage.${arch} =
-      home-manager.defaultPackage.${arch};
+  outputs = { nixpkgs, nixpkgs-unstable, home-manager, ... }: 
+    let
+      arch = "aarch64-darwin";
+    in {
+      defaultPackage.${arch} =
+        home-manager.defaultPackage.${arch};
 
-    homeConfigurations."ainharan@Ainharans-MBP" = 
-      home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.${arch};
-        modules = [ ./home.nix ];
-        extraSpecialArgs = {
-          pkgs-unstable = nixpkgs-unstable.legacyPackages.${arch};
+      homeConfigurations."ainharan@Ainharans-MBP" = 
+        home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.${arch};
+          modules = [ ./home.nix ];
+          extraSpecialArgs = {
+            pkgs-unstable = nixpkgs-unstable.legacyPackages.${arch};
+          };
         };
-      };
 
-    # set up for oracle machine
-    homeConfigurations."ainharan@ainharan-mac" = 
-      home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.${arch};
-        modules = [ ./home.nix ];
-      };
+      # set up for oracle machine
+      homeConfigurations."ainharan@ainharan-mac" = 
+        home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.${arch};
+          modules = [ ./home.nix ];
+        };
 
     };
 
