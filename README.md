@@ -1,3 +1,4 @@
+# Install
 1. Install Nix cia the recommended multi-user installation following instructions [here](https://nixos.org/download)
 2. Clone repo in ~/.config directory
 ```
@@ -18,4 +19,12 @@ sudo launchctl kickstart -k system/org.nixos.nix-daemon
 5. Let home-manager set up
 ```
 cd ~/.config/home-manager && nix run . switch
+
+```
+# Update packages
+
+```
+cd ~/.config/home-manager
+nix flake update
+home-manager switch
 ```
