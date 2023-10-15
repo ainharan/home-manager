@@ -9,22 +9,12 @@
     pkgs-unstable.cowsay # test unstable specified pkg
   ];
 
-  programs.git = {
-    enable = true;
-    includes = [{ path = "~/.config/nixpkgs/gitconfig"; }];
+  programs = {
+    git = (import ~/.config/home-manager/programs/git.nix { inherit pkgs; });
+    zsh = (import ~/.config/home-manager/programs/zsh/zsh.nix { inherit pkgs; });
+    fzf = (import ~/.config/home-manager/programs/fzf.nix { inherit pkgs; });
+    direnv = (import ~/.config/home-manager/programs/direnv.nix { inherit pkgs; });
   };
 
-  programs.zsh = {
-    enable = true;
-    initExtra = builtins.readFile ./zshrc;
-  };
-
-  programs.fzf = {
-    enable = true;
-  };
-
-  programs.direnv = {
-    enable = true;
-    nix-direnv.enable = true;
-  };
+  
 }
