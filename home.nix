@@ -14,6 +14,7 @@
     pkgs.podman
     pkgs.podman-compose
     pkgs.sl # for testing purposes
+    pkgs.yarn
     pkgs-unstable.cowsay # test unstable specified pkg
     pkgs-unstable.terraform
   ];
