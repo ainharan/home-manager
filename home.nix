@@ -5,8 +5,17 @@
   programs.home-manager.enable = true;
 
   home.packages = [
+    pkgs.colima
+    pkgs.docker
+    pkgs.docker-compose
+    pkgs.jq
+    pkgs.oci-cli
+    pkgs.qemu
+    pkgs.podman
+    pkgs.podman-compose
     pkgs.sl # for testing purposes
     pkgs-unstable.cowsay # test unstable specified pkg
+    pkgs-unstable.terraform
   ];
 
   programs = {
