@@ -2,3 +2,11 @@
 if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
   . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
 fi
+
+# set zsh highlighting theme
+source ~/.config/home-manager/programs/zsh/catppuccin_frappe-zsh-syntax-highlighting.zsh
+
+# set JAVA_HOME using asdf
+. ~/.asdf/plugins/java/set-java-home.zsh
+
+
