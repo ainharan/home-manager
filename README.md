@@ -26,5 +26,5 @@ cd ~/.config/home-manager && nix run . switch
 ```
 cd ~/.config/home-manager
 nix flake update
-home-manager switch
+nix run home-manager -- switch --flake ~/.config/home-manager#ainharan --impure --show-trace
 ```
