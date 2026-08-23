@@ -28,12 +28,12 @@
       defaultPackage.${arch} =
         home-manager.defaultPackage.${arch};
 
-      homeConfigurations.ainharan = 
+      homeConfigurations.ainharan =
         home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.${arch};
           modules = [
-              catppuccin.homeManagerModules.catppuccin
-              ./home.nix 
+              catppuccin.homeModules.catppuccin
+              ./home.nix
 	      # Temp solution: https://github.com/NixOS/nixpkgs/issues/402079
               {
                   nixpkgs.overlays = [
@@ -46,6 +46,7 @@
 	      ];
           extraSpecialArgs = {
             pkgs-unstable = nixpkgs-unstable.legacyPackages.${arch};
+            inherit catppuccin catppuccin-toolbox;
           };
         };
     };

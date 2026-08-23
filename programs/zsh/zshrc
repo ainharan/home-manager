@@ -12,6 +12,9 @@ source ~/.config/home-manager/programs/zsh/catppuccin_mocha-zsh-syntax-highlight
 export TESTCONTAINERS_RYUK_DISABLED=true
 export DOCKER_HOST=unix:///Users/ainharan/.colima/docker.sock
 
+# add opencode to $PATH
+export PATH=/Users/ainharan/.opencode/bin:$PATH
+
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -19,3 +22,8 @@ export NVM_DIR="$HOME/.nvm"
 
 path+=('/Users/ainharan/.local/bin')
 export path
+
+# Enable colors for ls
+export CLICOLOR=1
+export LSCOLORS=GxFxCxDxBxegedabagaced
+alias ls='ls -G'

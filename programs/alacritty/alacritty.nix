@@ -1,15 +1,12 @@
 { pkgs, ... }:
 
 {
-  # This 'enable' option tells Home Manager to enable and configure Alacritty.
   enable = true;
 
-  # The 'settings' attribute defines the contents of your Alacritty configuration file.
   settings = {
-    # --- Font Configuration ---
     font = {
       normal = {
-        family = "JetBrainsMono Nerd Font"; # Ensure this font is installed
+        family = "JetBrainsMono Nerd Font"; 
         style = "Regular";
       };
       bold = {
@@ -23,7 +20,6 @@
       size = 12;
     };
 
-    # --- Color Scheme (Example: Catppuccin Mocha) ---
     colors = {
       primary = {
         background = "#1e1e2e";
@@ -55,7 +51,6 @@
       };
     };
 
-    # --- Window Configuration ---
     window = {
       opacity = 1.0;
       padding = {
@@ -64,7 +59,10 @@
       };
     };
 
-    # --- TERMINAL Configuration (Corrected Section) ---
+    env = {
+      TERM = "xterm-256color";
+    };
+
     terminal = {
       shell = {
         program = "${pkgs.zsh}/bin/zsh";
@@ -72,7 +70,6 @@
       };
     };
 
-    # --- Other Settings (optional) ---
     selection = {
       save_to_clipboard = true;
     };

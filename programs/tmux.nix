@@ -1,7 +1,10 @@
-{ pkgs , ... }:
+{ pkgs, ... }:
 
 {
   enable = true;
+
+  # Force default shell path
+  shell = "${pkgs.zsh}/bin/zsh";
 
   aggressiveResize = true;
   baseIndex = 1;
@@ -9,41 +12,36 @@
   keyMode = "vi";
   newSession = true;
   secureSocket = true;
-#  shell = "${pkgs.nushell}/bin/nu";
   shortcut = "a";
-  terminal = "screen-256color";
 
   plugins = with pkgs.tmuxPlugins; [
     {
       plugin = catppuccin;
-      extraConfig = '' 
-        set -g @catppuccin_flavour 'frappe'
+      extraConfig = ''
+        # CONSOLIDATED TRUE COLOR FIXES:
+        set -g default-terminal "tmux-256color"
+        set -ga terminal-overrides ",alacritty:RGB"
+        set -ga terminal-overrides ",*256col*:RGB"
+
+        set -g @catppuccin_flavor 'frappe'
         set -g @catppuccin_window_tabs_enabled on
         set -g @catppuccin_date_time "%H:%M"
       '';
     }
     cpu
-   # {
-   #   plugin = resurrect;
-   #   extraConfig = "set -g @resurrect-strategy-nvim 'session'";
-   # }
-   # {
-   #   plugin = continuum;
-   #   extraConfig = ''
-   #     set -g @continuum-restore 'on'
-   #     set -g @continuum-save-interval '1' # minutes
-   #   '';
-   # }
   ];
 
   extraConfig = ''
+    # Force tmux panes to invoke zsh directly upon pane startup
+    set -g default-command "${pkgs.zsh}/bin/zsh"
+
     # use C-a, since it's on the home row and easier to hit than C-b
     set-option -g prefix C-a
     unbind-key C-a
     bind-key C-a send-prefix
     set -g base-index 1
     
-    # Makes pressing ESC in Neovim happen without delay (https://github.com/neovim/neovim/wiki/FAQ)
+    # Makes pressing ESC in Neovim happen without delay
     set-option -sg escape-time 10
     
     # mouse behavior
@@ -51,10 +49,6 @@
     
     setw -g status-keys vi
     setw -g mode-keys vi
-    
-    #https://gist.github.com/bbqtd/a4ac060d6f6b9ea6fe3aabe735aa9d95
-    set-option default-terminal "tmux-256color"
-    set-option -a terminal-overrides ",*256col*:RGB"
     
     bind-key : command-prompt
     bind-key r refresh-client
@@ -79,6 +73,5 @@
     bind -T copy-mode-vi v send -X begin-selection
     bind -T copy-mode-vi y send -X copy-pipe "reattach-to-user-namespace pbcopy"\; display-message "copied to system clipboard"
     bind -T copy-mode-vi DoubleClick1Pane select-pane\; send -X select-word\; send -X stop-selection
-
   '';
 }
