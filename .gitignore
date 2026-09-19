@@ -1,1 +1,4 @@
 zshrc.local
+*.backup
+result
+result-*

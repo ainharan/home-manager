@@ -16,7 +16,6 @@
     pkgs.mysql80
     pkgs.nodejs_23
     pkgs.oci-cli
-    pkgs.ollama
     pkgs.openssl_3_3
     pkgs.qemu
     pkgs.podman
@@ -35,14 +34,18 @@
     TERM = "alacritty";    
   };
 
+  # Load LiteLLM and OpenCode config files managed via Nix XDG
+  imports = [
+    ./programs/litellm.nix
+    ./programs/opencode.nix
+  ];
+
   programs = {
     alacritty = (import ~/.config/home-manager/programs/alacritty/alacritty.nix { inherit pkgs; });
     fzf = (import ~/.config/home-manager/programs/fzf.nix { inherit pkgs; });
     git = (import ~/.config/home-manager/programs/git/git.nix { inherit pkgs; });
     neovim = (import ~/.config/home-manager/programs/nvim/nvim.nix { inherit pkgs; });
-    
     tmux = (import ~/.config/home-manager/programs/tmux.nix { inherit pkgs; }); 
-    
     zsh = (import ~/.config/home-manager/programs/zsh/zsh.nix { inherit pkgs catppuccin; });
   };
 }

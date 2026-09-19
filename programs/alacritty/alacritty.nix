@@ -4,6 +4,14 @@
   enable = true;
 
   settings = {
+    keyboard.bindings = [
+      {
+        key = "F13";
+        mods = "Control";
+        chars = "\\u001c"; # Converts Ctrl + F12 into Ctrl + \ for tmux
+      }
+    ];
+
     font = {
       normal = {
         family = "JetBrainsMono Nerd Font"; 
