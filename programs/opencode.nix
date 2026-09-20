@@ -23,7 +23,10 @@
           "qwen" = {
             name = "Qwen 2.5 7B (Local)";
           };
-          "r1-local" = {
+          "r1-14b" = {
+            name = "DeepSeek R1 14B (Local)";
+          };
+          "r1-32b" = {
             name = "DeepSeek R1 32B (Local)";
           };
         };

@@ -24,17 +24,26 @@
           model: deepseek/deepseek-chat
           api_key: os.environ/DEEPSEEK_API_KEY
 
-      # 4. Local Privacy Model (Qwen 2.5 7B via Ollama)
+      # 4. Local Privacy Model (Qwen 2.5 7B via Ollama OpenAI API)
       - model_name: qwen
         litellm_params:
-          model: ollama/qwen2.5:7b
-          api_base: http://localhost:11434
+          model: openai/qwen2.5:7b
+          api_base: http://localhost:11434/v1
+          api_key: "ollama"
 
-      # 5. Local High-Intelligence Reasoning (DeepSeek-R1 Distill Qwen 32B via Ollama)
-      - model_name: r1-local
+      # 5. Local Fast Reasoning (DeepSeek-R1 Distill Qwen 14B)
+      - model_name: r1-14b
         litellm_params:
-          model: ollama/deepseek-r1:32b
-          api_base: http://localhost:11434
+          model: openai/deepseek-r1:14b
+          api_base: http://localhost:11434/v1
+          api_key: "ollama"
+
+      # 6. Local High-Intelligence Reasoning (DeepSeek-R1 Distill Qwen 32B)
+      - model_name: r1-32b
+        litellm_params:
+          model: openai/deepseek-r1:32b
+          api_base: http://localhost:11434/v1
+          api_key: "ollama"
 
     litellm_settings:
       drop_params: true
