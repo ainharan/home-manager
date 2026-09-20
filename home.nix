@@ -12,6 +12,7 @@
     pkgs.docker-compose
     pkgs.dos2unix
     pkgs.ffmpeg-full
+    pkgs.glow
     pkgs.jq
     pkgs.mysql80
     pkgs.nodejs_23
