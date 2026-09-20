@@ -30,6 +30,12 @@
           model: ollama/qwen2.5:7b
           api_base: http://localhost:11434
 
+      # 5. Local High-Intelligence Reasoning (DeepSeek-R1 Distill Qwen 32B via Ollama)
+      - model_name: r1-local
+        litellm_params:
+          model: ollama/deepseek-r1:32b
+          api_base: http://localhost:11434
+
     litellm_settings:
       drop_params: true
       set_verbose: false
