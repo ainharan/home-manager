@@ -24,6 +24,12 @@
           model: deepseek/deepseek-chat
           api_key: os.environ/DEEPSEEK_API_KEY
 
+      # 4. Local Privacy Model (Qwen 2.5 7B via Ollama)
+      - model_name: qwen
+        litellm_params:
+          model: ollama/qwen2.5:7b
+          api_base: http://localhost:11434
+
     litellm_settings:
       drop_params: true
       set_verbose: false

@@ -20,6 +20,9 @@
           "deepseek" = {
             name = "DeepSeek";
           };
+          "qwen" = {
+            name = "Qwen 2.5 7B (Local)";
+          };
         };
       };
     };
